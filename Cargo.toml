@@ -1,0 +1,11 @@
+[package]
+name = "geoplaces"
+version = "0.1.0"
+authors = ["Jan-Erik Rediger <janerik@fnordig.de>"]
+
+[dependencies]
+reqwest = "0.2.0"
+serde = "0.8.21"
+serde_derive = "0.8.21"
+serde_json = "0.8.4"
+url = "1.2.4"
