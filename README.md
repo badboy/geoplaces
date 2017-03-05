@@ -3,7 +3,7 @@
 Query OpenStreetMap for geolocation information of any place.
 This is based on [Nominatim](http://nominatim.openstreetmap.org/), the OpenStreetMap search engine.
 
-**Currently requires Rust Nightly, because I'm lazy, but once Rust 1.15 is out it should just work.**
+**Requires Rust >=1.15**
 
 ## Install
 

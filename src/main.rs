@@ -1,5 +1,3 @@
-#![feature(proc_macro)]
-
 #[macro_use]
 extern crate serde_derive;
 extern crate url;
@@ -9,7 +7,7 @@ use std::env;
 use std::process;
 use url::Url;
 
-const API_URL : &'static str = "http://nominatim.openstreetmap.org/search/?format=json&q=";
+const API_URL : &'static str = "http://nominatim.openstreetmap.org/search/?format=json";
 
 #[derive(Serialize, Deserialize,Debug)]
 struct Place {
