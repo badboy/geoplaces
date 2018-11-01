@@ -45,7 +45,7 @@ fn main() {
 
     for place in places {
         println!("{}", place.display_name);
-        println!("  Latitute:  {}", place.lat);
+        println!("  Latitude:  {}", place.lat);
         println!("  Longitude: {}", place.lon);
         println!();
     }

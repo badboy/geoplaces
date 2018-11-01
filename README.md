@@ -19,15 +19,15 @@ cargo install --git https://github.com/badboy/geoplaces
 ```
 $ geoplaces "New York"
 NYC, New York, United States of America
-  Latitute:  40.7305991
+  Latitude:  40.7305991
   Longitude: -73.9865811
 
 New York, NYC, New York, United States of America
-  Latitute:  40.7647714
+  Latitude:  40.7647714
   Longitude: -73.9807639
 
 New York, Frederiksberggade, Kødbyen, Vesterbro, København, Københavns Kommune, Region Hovedstaden, 1459, Danmark
-  Latitute:  55.677379
+  Latitude:  55.677379
   Longitude: 12.571152
 
 ```
