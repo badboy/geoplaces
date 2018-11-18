@@ -57,7 +57,7 @@ fn main() {
         }
     };
 
-    let client = reqwest::Client::new().expect("Can't create client");
+    let client = reqwest::Client::new();
     let mut res = client.get(query_url(&query)).send().expect("Can't query API");
     let places : PlacesList = res.json().expect("Can't parse API data");
 
