@@ -30,11 +30,29 @@ fn query_url(query: &str) -> Url {
     url
 }
 
+#[derive(PartialEq)]
+enum Format {
+    Xflux,
+    Readable,
+}
+
 fn main() {
-    let query = match env::args().skip(1).next() {
+    let mut args = env::args().skip(1).peekable();
+    let format = match args.peek() {
+        Some(arg) if arg == "-x" => {
+            Format::Xflux
+        },
+        _ => Format::Readable,
+    };
+
+    if format == Format::Xflux {
+        let _ = args.next();
+    }
+
+    let query = match args.next() {
         Some(arg) => arg,
         None => {
-            println!("Usage: geoplaces <query>");
+            println!("Usage: geoplaces [-x] <query>");
             process::exit(1);
         }
     };
@@ -44,9 +62,18 @@ fn main() {
     let places : PlacesList = res.json().expect("Can't parse API data");
 
     for place in places {
-        println!("{}", place.display_name);
-        println!("  Latitude:  {}", place.lat);
-        println!("  Longitude: {}", place.lon);
-        println!();
+        match format {
+            Format::Xflux => {
+                println!("xflux -l {} -g {}", place.lat, place.lon);
+                break;
+
+            }
+            Format::Readable => {
+                println!("{}", place.display_name);
+                println!("  Latitude:  {}", place.lat);
+                println!("  Longitude: {}", place.lon);
+                println!();
+            }
+        }
     }
 }
