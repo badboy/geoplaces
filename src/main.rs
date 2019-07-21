@@ -1,15 +1,12 @@
-#[macro_use]
-extern crate serde_derive;
-extern crate url;
-extern crate reqwest;
-
 use std::env;
 use std::process;
+
+use serde::Deserialize;
 use url::Url;
 
-const API_URL : &'static str = "http://nominatim.openstreetmap.org/search/?format=json";
+const API_URL: &'static str = "http://nominatim.openstreetmap.org/search/?format=json";
 
-#[derive(Serialize, Deserialize,Debug)]
+#[derive(Deserialize, Debug)]
 struct Place {
     lat: String,
     lon: String,
@@ -51,9 +48,10 @@ fn main() {
         }
     };
 
-    let client = reqwest::Client::new();
-    let mut res = client.get(query_url(&query)).send().expect("Can't query API");
-    let places : PlacesList = res.json().expect("Can't parse API data");
+    let places: PlacesList = reqwest::get(query_url(&query))
+        .expect("Can't query API")
+        .json()
+        .expect("Can't parse API data");
 
     for place in places {
         match format {
