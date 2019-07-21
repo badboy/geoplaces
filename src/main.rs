@@ -11,15 +11,9 @@ const API_URL : &'static str = "http://nominatim.openstreetmap.org/search/?forma
 
 #[derive(Serialize, Deserialize,Debug)]
 struct Place {
-    place_id: String,
-    osm_type: String,
-    osm_id: String,
     lat: String,
     lon: String,
     display_name: String,
-    class: String,
-    #[serde(rename = "type")]
-    typ: String,
 }
 
 type PlacesList = Vec<Place>;
