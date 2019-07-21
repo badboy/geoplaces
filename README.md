@@ -3,7 +3,7 @@
 Query OpenStreetMap for geolocation information of any place.
 This is based on [Nominatim](http://nominatim.openstreetmap.org/), the OpenStreetMap search engine.
 
-**Requires Rust >=1.15**
+**Requires Rust >=1.31**
 
 ## Install
 
@@ -11,7 +11,7 @@ First [install Rust](https://rustup.rs/).
 Now install `geoplaces` using:
 
 ```
-cargo install --git https://github.com/badboy/geoplaces
+cargo install geoplaces
 ```
 
 ## Usage
@@ -19,17 +19,16 @@ cargo install --git https://github.com/badboy/geoplaces
 ```
 $ geoplaces "New York"
 NYC, New York, United States of America
-  Latitude:  40.7305991
-  Longitude: -73.9865811
+  Latitude:  40.7127281
+  Longitude: -74.0060152
 
-New York, NYC, New York, United States of America
-  Latitude:  40.7647714
-  Longitude: -73.9807639
+New York, United States of America
+  Latitude:  43.1561681
+  Longitude: -75.8449946
 
-New York, Frederiksberggade, Kødbyen, Vesterbro, København, Københavns Kommune, Region Hovedstaden, 1459, Danmark
-  Latitude:  55.677379
-  Longitude: 12.571152
-
+New York, Tyne and Wear, North East England, England, NE29 8EP, UK
+  Latitude:  55.0252998
+  Longitude: -1.4869496
 ```
 
 ## License
