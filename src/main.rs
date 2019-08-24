@@ -2,9 +2,10 @@ use std::env;
 use std::process;
 
 use serde::Deserialize;
-use url::Url;
+use percent_encoding::{utf8_percent_encode, NON_ALPHANUMERIC};
+use isahc::prelude::*;
 
-const API_URL: &'static str = "http://nominatim.openstreetmap.org/search/?format=json";
+const API_URL: &'static str = "https://nominatim.openstreetmap.org/search/?format=json";
 
 #[derive(Deserialize, Debug)]
 struct Place {
@@ -15,10 +16,8 @@ struct Place {
 
 type PlacesList = Vec<Place>;
 
-fn query_url(query: &str) -> Url {
-    let mut url = Url::parse(API_URL).unwrap();
-    url.query_pairs_mut().append_pair("q", query);
-    url
+fn query_url(query: &str) -> String {
+    format!("{}&q={}", API_URL, utf8_percent_encode(query, NON_ALPHANUMERIC))
 }
 
 #[derive(PartialEq)]
@@ -48,7 +47,7 @@ fn main() {
         }
     };
 
-    let places: PlacesList = reqwest::get(query_url(&query))
+    let places: PlacesList = isahc::get(query_url(&query))
         .expect("Can't query API")
         .json()
         .expect("Can't parse API data");
